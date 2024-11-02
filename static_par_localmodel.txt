@@ -1,0 +1,5 @@
+/mnt/c/Users/r9307/interIIT/ch2_class_pds_release_38_20240927/cla/miscellaneous/ch2_class_x2abund_lmodel_v1.0/X2ABUND_LMODEL_V1/test/modelop_20210827T210316000_20210827T210332000.txt
+64.55
+3.83034e-09
+113.779
+16
