@@ -1,5 +1,4 @@
-#only for feb data
-
+#feb data
 import os
 import xml.etree.ElementTree as ET
 from collections import defaultdict
@@ -198,31 +197,96 @@ directory = 'XML_FILES'
 stats = aggregate_parameters(directory)
 batch_counts, total_files, processed_files = batch_counter(directory)
 
-# Display the file processing summary
-print(f"\nFile Processing Summary:")
-print(f"Total XML files found: {total_files}")
-print(f"Successfully processed files: {processed_files}")
-print(f"Files with errors: {total_files - processed_files}")
+def export_stats_to_xml(stats, batch_counts, output_dir):
+    """
+    Export statistics and batch counts to an XML file in the specified output directory.
+    
+    Parameters:
+    stats (dict): Dictionary containing parameter statistics
+    batch_counts (dict): Dictionary containing batch distribution counts
+    output_dir (str): Directory where the XML file should be saved
+    """
+    # Create output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Generate output filename based on timestamp
+    timestamp = stats.get('file_counts', {}).get('processed_date', 
+                                                stats['parameters'].get('start_date_time', 
+                                                                      'analysis_results'))
+    output_file = os.path.join(output_dir, f"parameter_analysis_{timestamp}.xml")
+    
+    root = ET.Element("parameter_analysis")
+    
+    # Add file processing summary
+    summary = ET.SubElement(root, "file_summary")
+    ET.SubElement(summary, "total_files").text = str(stats['file_counts']['total'])
+    ET.SubElement(summary, "processed_files").text = str(stats['file_counts']['processed'])
+    ET.SubElement(summary, "error_files").text = str(stats['file_counts']['errors'])
+    
+    # Add parameter statistics
+    parameters = ET.SubElement(root, "parameters")
+    for param_name, param_stats in stats['parameters'].items():
+        if param_stats:  # Only add parameters with valid statistics
+            parameter = ET.SubElement(parameters, "parameter")
+            parameter.set("name", param_name)
+            
+            ET.SubElement(parameter, "count").text = str(param_stats['count'])
+            ET.SubElement(parameter, "average").text = f"{param_stats['average']:.6f}"
+            ET.SubElement(parameter, "minimum").text = f"{param_stats['min']:.6f}"
+            ET.SubElement(parameter, "maximum").text = f"{param_stats['max']:.6f}"
+            ET.SubElement(parameter, "range").text = f"{param_stats['range']:.6f}"
+    
+    # Add batch distribution data
+    distributions = ET.SubElement(root, "batch_distributions")
+    for param_name, batches in batch_counts.items():
+        parameter = ET.SubElement(distributions, "parameter")
+        parameter.set("name", param_name)
+        
+        # Calculate total values in batches
+        total_in_batches = sum(batches.values())
+        ET.SubElement(parameter, "total_counted").text = str(total_in_batches)
+        
+        # Add individual batch counts
+        batch_list = ET.SubElement(parameter, "batches")
+        for batch_name, count in batches.items():
+            if count > 0:  # Only include non-empty batches
+                batch = ET.SubElement(batch_list, "batch")
+                batch.set("name", batch_name)
+                batch.text = str(count)
+    
+    # Create XML tree and write to file with proper formatting
+    tree = ET.ElementTree(root)
+    ET.indent(tree, space="  ", level=0)
+    
+    try:
+        tree.write(output_file, encoding="utf-8", xml_declaration=True)
+        print(f"\nStatistics successfully exported to {output_file}")
+        return True
+    except Exception as e:
+        print(f"Error writing XML file: {str(e)}")
+        return False
 
-# Display the statistics
-print("\nParameter Statistics:")
-for param, stat in stats['parameters'].items():
-    if stat:
-        print(f"\n{param}:")
-        print(f"  Count: {stat['count']} out of {total_files} files")
-        print(f"  Average: {stat['average']:.2f}")
-        print(f"  Min: {stat['min']}")
-        print(f"  Max: {stat['max']}")
-        print(f"  Range: {stat['range']}")
-    else:
-        print(f"\n{param}: No valid values found")
+def analyze_and_export(input_dir, output_dir):
+    """
+    Analyze XML files in the input directory and export results to an XML file in the output directory.
+    
+    Parameters:
+    input_dir (str): Directory containing XML files to analyze
+    output_dir (str): Directory where the output XML file should be saved
+    """
+    # Get statistics and batch counts
+    stats = aggregate_parameters(input_dir)
+    batch_counts, total_files, processed_files = batch_counter(input_dir)
+    
+    # Update file counts in stats if needed
+    stats['file_counts']['total'] = total_files
+    stats['file_counts']['processed'] = processed_files
+    stats['file_counts']['errors'] = total_files - processed_files
+    
+    # Export to XML
+    return export_stats_to_xml(stats, batch_counts, output_dir)
 
-# Display the batch counts for each parameter
-print("\nBatch Distribution:")
-for param, batches in batch_counts.items():
-    print(f"\nParameter: {param}")
-    total_in_batches = sum(batches.values())
-    print(f"Total values counted: {total_in_batches} out of {total_files} files")
-    for batch_name, count in batches.items():
-        if count > 0:  # Only show non-empty batches
-            print(f"  {batch_name}: Count = {count}")
+if __name__ == "__main__":
+    input_directory = "XML_FILES"
+    output_directory = "Output"  # Your existing output directory
+    analyze_and_export(input_directory, output_directory)
