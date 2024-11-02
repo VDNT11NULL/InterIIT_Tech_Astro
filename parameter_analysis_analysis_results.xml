@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='utf-8'?>
+<parameter_analysis>
+  <file_summary>
+    <total_files>339</total_files>
+    <processed_files>339</processed_files>
+    <error_files>0</error_files>
+  </file_summary>
+  <parameters>
+    <parameter name="upper_left_latitude">
+      <count>339</count>
+      <average>45.408435</average>
+      <minimum>-17.462300</minimum>
+      <maximum>89.439800</maximum>
+      <range>106.902100</range>
+    </parameter>
+    <parameter name="upper_left_longitude">
+      <count>339</count>
+      <average>23.404337</average>
+      <minimum>-172.288000</minimum>
+      <maximum>175.420000</maximum>
+      <range>347.708000</range>
+    </parameter>
+    <parameter name="upper_right_latitude">
+      <count>339</count>
+      <average>45.401340</average>
+      <minimum>-17.473900</minimum>
+      <maximum>89.458400</maximum>
+      <range>106.932300</range>
+    </parameter>
+    <parameter name="upper_right_longitude">
+      <count>339</count>
+      <average>22.977141</average>
+      <minimum>-158.673000</minimum>
+      <maximum>138.600000</maximum>
+      <range>297.273000</range>
+    </parameter>
+    <parameter name="lower_left_latitude">
+      <count>339</count>
+      <average>44.236154</average>
+      <minimum>-18.526200</minimum>
+      <maximum>88.578200</maximum>
+      <range>107.104400</range>
+    </parameter>
+    <parameter name="lower_left_longitude">
+      <count>339</count>
+      <average>21.719444</average>
+      <minimum>-161.399000</minimum>
+      <maximum>160.346000</maximum>
+      <range>321.745000</range>
+    </parameter>
+    <parameter name="lower_right_latitude">
+      <count>339</count>
+      <average>44.228837</average>
+      <minimum>-18.537900</minimum>
+      <maximum>88.567300</maximum>
+      <range>107.105200</range>
+    </parameter>
+    <parameter name="lower_right_longitude">
+      <count>339</count>
+      <average>23.616992</average>
+      <minimum>-170.350000</minimum>
+      <maximum>163.155000</maximum>
+      <range>333.505000</range>
+    </parameter>
+  </parameters>
+  <batch_distributions>
+    <parameter name="upper_left_latitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-17.462,-6.772)">26</batch>
+        <batch name="Batch_2(-6.772,3.918)">26</batch>
+        <batch name="Batch_3(3.918,14.608)">25</batch>
+        <batch name="Batch_4(14.608,25.299)">26</batch>
+        <batch name="Batch_5(25.299,35.989)">26</batch>
+        <batch name="Batch_6(35.989,46.679)">26</batch>
+        <batch name="Batch_7(46.679,57.369)">26</batch>
+        <batch name="Batch_8(57.369,68.059)">47</batch>
+        <batch name="Batch_9(68.059,78.750)">52</batch>
+        <batch name="Batch_10(78.750,89.440)">59</batch>
+      </batches>
+    </parameter>
+    <parameter name="upper_left_longitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-172.288,-137.517)">8</batch>
+        <batch name="Batch_2(-137.517,-102.746)">65</batch>
+        <batch name="Batch_7(36.337,71.108)">253</batch>
+        <batch name="Batch_8(71.108,105.878)">8</batch>
+        <batch name="Batch_9(105.878,140.649)">3</batch>
+        <batch name="Batch_10(140.649,175.420)">2</batch>
+      </batches>
+    </parameter>
+    <parameter name="upper_right_latitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-17.474,-6.781)">26</batch>
+        <batch name="Batch_2(-6.781,3.913)">26</batch>
+        <batch name="Batch_3(3.913,14.606)">25</batch>
+        <batch name="Batch_4(14.606,25.299)">26</batch>
+        <batch name="Batch_5(25.299,35.992)">26</batch>
+        <batch name="Batch_6(35.992,46.685)">26</batch>
+        <batch name="Batch_7(46.685,57.379)">26</batch>
+        <batch name="Batch_8(57.379,68.072)">47</batch>
+        <batch name="Batch_9(68.072,78.765)">52</batch>
+        <batch name="Batch_10(78.765,89.458)">59</batch>
+      </batches>
+    </parameter>
+    <parameter name="upper_right_longitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-158.673,-128.946)">9</batch>
+        <batch name="Batch_2(-128.946,-99.218)">68</batch>
+        <batch name="Batch_8(49.418,79.145)">250</batch>
+        <batch name="Batch_9(79.145,108.873)">8</batch>
+        <batch name="Batch_10(108.873,138.600)">4</batch>
+      </batches>
+    </parameter>
+    <parameter name="lower_left_latitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-18.526,-7.816)">26</batch>
+        <batch name="Batch_2(-7.816,2.895)">26</batch>
+        <batch name="Batch_3(2.895,13.605)">26</batch>
+        <batch name="Batch_4(13.605,24.316)">25</batch>
+        <batch name="Batch_5(24.316,35.026)">26</batch>
+        <batch name="Batch_6(35.026,45.736)">26</batch>
+        <batch name="Batch_7(45.736,56.447)">26</batch>
+        <batch name="Batch_8(56.447,67.157)">49</batch>
+        <batch name="Batch_9(67.157,77.868)">52</batch>
+        <batch name="Batch_10(77.868,88.578)">57</batch>
+      </batches>
+    </parameter>
+    <parameter name="lower_left_longitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-161.399,-129.225)">15</batch>
+        <batch name="Batch_2(-129.225,-97.050)">60</batch>
+        <batch name="Batch_7(31.648,63.823)">226</batch>
+        <batch name="Batch_8(63.823,95.997)">35</batch>
+        <batch name="Batch_10(128.172,160.346)">3</batch>
+      </batches>
+    </parameter>
+    <parameter name="lower_right_latitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-18.538,-7.827)">26</batch>
+        <batch name="Batch_2(-7.827,2.883)">26</batch>
+        <batch name="Batch_3(2.883,13.594)">26</batch>
+        <batch name="Batch_4(13.594,24.304)">25</batch>
+        <batch name="Batch_5(24.304,35.015)">26</batch>
+        <batch name="Batch_6(35.015,45.725)">26</batch>
+        <batch name="Batch_7(45.725,56.436)">27</batch>
+        <batch name="Batch_8(56.436,67.146)">48</batch>
+        <batch name="Batch_9(67.146,77.857)">52</batch>
+        <batch name="Batch_10(77.857,88.567)">57</batch>
+      </batches>
+    </parameter>
+    <parameter name="lower_right_longitude">
+      <total_counted>339</total_counted>
+      <batches>
+        <batch name="Batch_1(-170.350,-137.000)">2</batch>
+        <batch name="Batch_2(-137.000,-103.649)">74</batch>
+        <batch name="Batch_7(29.753,63.103)">130</batch>
+        <batch name="Batch_8(63.103,96.454)">129</batch>
+        <batch name="Batch_9(96.454,129.804)">2</batch>
+        <batch name="Batch_10(129.804,163.155)">2</batch>
+      </batches>
+    </parameter>
+  </batch_distributions>
+</parameter_analysis>
